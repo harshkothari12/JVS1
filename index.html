@@ -9,22 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Variables - Updated for Blue/Purple Gradient Theme */
+        /* Variables */
         :root {
-            --primary-light: #5e84f7; /* Lighter blue for gradients */
-            --primary-color: #2563eb; /* Blue-700 - Base Blue */
-            --primary-dark: #1e40af; /* Darker blue */
-            --secondary-color: #7c3aed; /* Violet-700 - Accent Purple */
-            --accent-color: #059669; /* Green-700 for checkmarks */
-            --text-dark: #1e293b; /* Slate-900 */
-            --text-light: #64748b; /* Slate-500 */
-            --bg-light: #f9fafb; /* Off-white background */
-            --bg-dark: #1f2937; /* Dark footer background */
-            --border-color: #e5e7eb; /* Gray-200 */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
-            --gradient-main: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            --gradient-light: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-color) 100%);
+            --primary-color: #4A00E0; /* Deep Violet */
+            --secondary-color: #8E2DE2; /* Lighter Violet */
+            --accent-color: #00BF63; /* Vibrant Green */
+            --text-dark: #212121; /* Dark Grey */
+            --text-light: #616161; /* Medium Grey */
+            --bg-light: #F8F8F8; /* Off-white */
+            --bg-dark: #2C3E50; /* Dark Blue-Grey */
+            --border-color: #E0E0E0; /* Light Grey */
+            --shadow-sm: 0 4px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 16px rgba(0,0,0,0.15);
         }
 
         /* Base Styles */
@@ -37,7 +33,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--text-dark);
-            background: var(--bg-light); /* Default light background */
+            background: var(--bg-light);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -68,7 +64,7 @@
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(255,255,255,0.95); /* Slightly more opaque for better readability */
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -142,7 +138,7 @@
 
         /* Hero Section */
         .hero-section {
-            background: var(--gradient-main); /* Using gradient variable */
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             min-height: 85vh;
             display: flex;
@@ -191,8 +187,8 @@
             align-items: center;
             gap: 0.75rem;
             padding: 1.2rem 2.8rem;
-            background: rgba(255,255,255,0.25); /* Slightly more prominent background */
-            border: 2px solid rgba(255,255,255,0.5); /* Stronger border */
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.4);
             border-radius: 50px;
             color: white;
             font-weight: 600;
@@ -202,7 +198,7 @@
         }
 
         .hero-cta:hover {
-            background: rgba(255,255,255,0.4); /* More visible on hover */
+            background: rgba(255,255,255,0.3);
             transform: translateY(-5px) scale(1.02);
             box-shadow: var(--shadow-md);
         }
@@ -262,6 +258,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            border: 1px solid var(--border-color); /* Added for subtle definition */
         }
 
         .feature-card:hover {
@@ -273,7 +270,7 @@
             width: 70px;
             height: 70px;
             margin-bottom: 1.5rem;
-            background: var(--gradient-light); /* Using a lighter gradient for icons */
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             border-radius: 15px;
             display: grid;
             place-items: center;
@@ -292,7 +289,7 @@
         .feature-card p {
             color: var(--text-light);
             font-size: 0.95rem;
-            flex-grow: 1; /* Ensures cards with varying content heights align at the bottom */
+            flex-grow: 1;
         }
 
         /* Services Section */
@@ -308,9 +305,10 @@
             border-radius: 15px;
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
-            border-top: 5px solid transparent; /* For hover effect */
+            border-top: 5px solid transparent;
             display: flex;
             flex-direction: column;
+            border: 1px solid var(--border-color); /* Added for subtle definition */
         }
 
         .service-card:hover {
@@ -327,9 +325,9 @@
         }
 
         .service-icon {
-            min-width: 60px; /* Fixed width to prevent content shifting */
+            min-width: 60px;
             height: 60px;
-            background: var(--gradient-light); /* Using a lighter gradient for icons */
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             border-radius: 10px;
             display: grid;
             place-items: center;
@@ -346,33 +344,33 @@
 
         .service-list {
             list-style: none;
-            padding-left: 0; /* Override default list padding */
-            flex-grow: 1; /* Allows list to take available space */
+            padding-left: 0;
+            flex-grow: 1;
         }
 
         .service-list li {
             padding: 0.6rem 0;
-            padding-left: 2rem; /* Space for custom bullet */
+            padding-left: 2rem;
             position: relative;
             color: var(--text-dark);
             font-size: 1rem;
         }
 
         .service-list li::before {
-            content: '\f00c'; /* FontAwesome checkmark icon */
+            content: '\f00c';
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
-            top: 0.75rem; /* Adjust vertical alignment */
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--accent-color);
             font-size: 0.9rem;
-            transform: translateY(-50%);
         }
 
         /* Call to Action Section */
         .cta-section {
-            background: var(--gradient-main); /* Using main gradient for CTA */
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             text-align: center;
             padding: 6rem 0;
@@ -397,11 +395,11 @@
         }
 
         .cta-section .section-title {
-            color: white; /* Override default title color for dark background */
+            color: white;
         }
 
         .cta-section .section-title::after {
-            background-color: white; /* White underline for dark background */
+            background-color: white;
         }
 
         .cta-section .section-subtitle {
@@ -418,8 +416,8 @@
 
         .cta-button {
             padding: 1.2rem 2.8rem;
-            background: rgba(255,255,255,0.25); /* Slightly more prominent background */
-            border: 2px solid rgba(255,255,255,0.5); /* Stronger border */
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.4);
             border-radius: 50px;
             color: white;
             font-weight: 600;
@@ -432,14 +430,9 @@
         }
 
         .cta-button:hover {
-            background: rgba(255,255,255,0.4); /* More visible on hover */
+            background: rgba(255,255,255,0.3);
             transform: translateY(-5px) scale(1.02);
             box-shadow: var(--shadow-md);
-        }
-
-        /* WhatsApp Icon size adjustment (Larger) */
-        .cta-button .fab.fa-whatsapp {
-            font-size: 1.5rem; /* WhatsApp આઇકનને મોટું કરવા માટે */
         }
 
         /* Footer */
@@ -454,7 +447,7 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
-            border-bottom: 1px solid #374151; /* Gray-700 */
+            border-bottom: 1px solid #374151;
             padding-bottom: 2rem;
         }
 
@@ -462,11 +455,11 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1.25rem;
-            color: var(--primary-light); /* Lighter primary color for footer headings */
+            color: var(--secondary-color); /* Changed for better contrast */
         }
 
         .footer-section p, .footer-section a {
-            color: #a0a7b3; /* Slightly lighter gray for text */
+            color: #b0b8c6; /* Slightly lighter gray for text */
             margin-bottom: 0.75rem;
             display: block;
             font-size: 0.95rem;
@@ -514,7 +507,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(255,255,255,0.98); /* More opaque for mobile menu */
+                background: rgba(255,255,255,0.98); /* More opaque for mobile */
                 box-shadow: var(--shadow-md);
                 padding: 1rem 0;
                 border-top: 1px solid var(--border-color);
@@ -615,12 +608,12 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-content">
-                <a href="#home" class="logo">JVS Center</a>
+                <a href="#home" class="logo">JVS CENTER</a>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">હોમ</a></li>
-                    <li><a href="#services">સેવાઓ</a></li>
-                    <li><a href="#features">વિશેષતાઓ</a></li>
-                    <li><a href="#contact">સંપર્ક</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
                     <i class="fas fa-bars"></i>
@@ -632,7 +625,8 @@
     <header class="hero-section" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">JVS Center: તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર</h1>
+                <h1 class="hero-title">JVS CENTER</h1> <br>
+                <h3 class="hero-title"> તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર</h3>
                 <p class="hero-subtitle">અમે તમારા બધા સરકારી અને ડિજિટલ દસ્તાવેજો સંબંધિત કાર્યોને સરળ અને ઝડપી બનાવીએ છીએ.</p>
                 <a href="tel:+919726912218" class="hero-cta">
                     <i class="fas fa-phone-alt"></i> હમણાં કૉલ કરો
@@ -805,7 +799,7 @@
                         <i class="fas fa-phone-alt"></i> અત્યારે કૉલ કરો
                     </a>
                     <a href="https://wa.me/919726912218" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <i class="fab fa-whatsapp"></i> WhatsApp પર સંપર્ક કરો
+                        <i class="fab fa-whatsapp" ></i> WhatsApp પર સંપર્ક કરો
                     </a>
                 </div>
             </div>
@@ -825,7 +819,7 @@
                     <a href="tel:+919726912218"><i class="fas fa-phone-alt"></i> +91 97269 12218</a>
                     <a href="https://wa.me/919726912218" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +91 97269 12218</a>
                     <p><i class="fas fa-map-marker-alt"></i> અમદાવાદ, ગુજરાત, ભારત</p>
-                </div>
+                    </div>
                 <div class="footer-section">
                     <h3>મહત્વપૂર્ણ સેવાઓ</h3>
                     <a href="#services">PAN કાર્ડ સેવાઓ</a>
