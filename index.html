@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JVS Center - તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Variables - Updated for Blue/Purple Gradient Theme */
+        :root {
+            --primary-light: #5e84f7; /* Lighter blue for gradients */
+            --primary-color: #2563eb; /* Blue-700 - Base Blue */
+            --primary-dark: #1e40af; /* Darker blue */
+            --secondary-color: #7c3aed; /* Violet-700 - Accent Purple */
+            --accent-color: #059669; /* Green-700 for checkmarks */
+            --text-dark: #1e293b; /* Slate-900 */
+            --text-light: #64748b; /* Slate-500 */
+            --bg-light: #f9fafb; /* Off-white background */
+            --bg-dark: #1f2937; /* Dark footer background */
+            --border-color: #e5e7eb; /* Gray-200 */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
+            --gradient-main: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-light: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-color) 100%);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light); /* Default light background */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95); /* Slightly more opaque for better readability */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        .logo:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-main); /* Using gradient variable */
+            color: white;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.08)"/></svg>') repeat;
+            opacity: 0.8;
+            background-size: 20px 20px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            animation: fadeInScale 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            opacity: 0.95;
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.2rem 2.8rem;
+            background: rgba(255,255,255,0.25); /* Slightly more prominent background */
+            border: 2px solid rgba(255,255,255,0.5); /* Stronger border */
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-cta:hover {
+            background: rgba(255,255,255,0.4); /* More visible on hover */
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Section General Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-light); /* Using a lighter gradient for icons */
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            font-size: 2.2rem;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            flex-grow: 1; /* Ensures cards with varying content heights align at the bottom */
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-top: 5px solid transparent; /* For hover effect */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-top-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            min-width: 60px; /* Fixed width to prevent content shifting */
+            height: 60px;
+            background: var(--gradient-light); /* Using a lighter gradient for icons */
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .service-list {
+            list-style: none;
+            padding-left: 0; /* Override default list padding */
+            flex-grow: 1; /* Allows list to take available space */
+        }
+
+        .service-list li {
+            padding: 0.6rem 0;
+            padding-left: 2rem; /* Space for custom bullet */
+            position: relative;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .service-list li::before {
+            content: '\f00c'; /* FontAwesome checkmark icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.75rem; /* Adjust vertical alignment */
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            transform: translateY(-50%);
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: var(--gradient-main); /* Using main gradient for CTA */
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.08)"/></svg>') repeat;
+            opacity: 0.8;
+            background-size: 20px 20px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section .section-title {
+            color: white; /* Override default title color for dark background */
+        }
+
+        .cta-section .section-title::after {
+            background-color: white; /* White underline for dark background */
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1.2rem 2.8rem;
+            background: rgba(255,255,255,0.25); /* Slightly more prominent background */
+            border: 2px solid rgba(255,255,255,0.5); /* Stronger border */
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(255,255,255,0.4); /* More visible on hover */
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* WhatsApp Icon size adjustment (Larger) */
+        .cta-button .fab.fa-whatsapp {
+            font-size: 1.5rem; /* WhatsApp આઇકનને મોટું કરવા માટે */
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #374151; /* Gray-700 */
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--primary-light); /* Lighter primary color for footer headings */
+        }
+
+        .footer-section p, .footer-section a {
+            color: #a0a7b3; /* Slightly lighter gray for text */
+            margin-bottom: 0.75rem;
+            display: block;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+            .hero-title {
+                font-size: clamp(2.5rem, 6vw, 3.8rem);
+            }
+            .hero-subtitle {
+                font-size: clamp(1rem, 2.5vw, 1.4rem);
+            }
+            .section-title {
+                font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.98); /* More opaque for mobile menu */
+                box-shadow: var(--shadow-md);
+                padding: 1rem 0;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem 1.5rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-section {
+                min-height: 65vh;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .features-grid,
+            .services-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card, .service-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon, .service-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .cta-button {
+                width: 90%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+            .hero-cta {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+            .section {
+                padding: 3rem 0;
+            }
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+            .service-list li {
+                font-size: 0.9rem;
+                padding-left: 1.5rem;
+            }
+            .service-list li::before {
+                font-size: 0.8rem;
+                top: 0.6rem;
+            }
+            .footer-content {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo">JVS Center</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">હોમ</a></li>
+                    <li><a href="#services">સેવાઓ</a></li>
+                    <li><a href="#features">વિશેષતાઓ</a></li>
+                    <li><a href="#contact">સંપર્ક</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">JVS Center: તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર</h1>
+                <p class="hero-subtitle">અમે તમારા બધા સરકારી અને ડિજિટલ દસ્તાવેજો સંબંધિત કાર્યોને સરળ અને ઝડપી બનાવીએ છીએ.</p>
+                <a href="tel:+919726912218" class="hero-cta">
+                    <i class="fas fa-phone-alt"></i> હમણાં કૉલ કરો
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">અમારી વિશેષતાઓ</h2>
+                <p class="section-subtitle">તમારા માટે શ્રેષ્ઠ સેવા પ્રદાન કરવા માટે અમે પ્રતિબદ્ધ છીએ, જે તમને સંતોષ અને સુવિધા આપશે.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="feature-title">ઝડપી અને કાર્યક્ષમ સેવા</h3>
+                    <p>તમારા બધા કામ ઝડપથી, સચોટ રીતે અને સમયસર પૂરા કરીએ છીએ, જેથી તમારો કિંમતી સમય બચે.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="feature-title">સંપૂર્ણ સુરક્ષા અને ગોપનીયતા</h3>
+                    <p>તમારી વ્યક્તિગત અને સંવેદનશીલ માહિતીની સંપૂર્ણ સુરક્ષા સુનિશ્ચિત કરીએ છીએ.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="feature-title">વિશ્વસનીય અને પારદર્શક</h3>
+                    <p>વર્ષોના અનુભવ સાથે, અમે પારદર્શક અને વિશ્વાસપાત્ર સેવા પ્રદાન કરવા માટે પ્રતિબદ્ધ છીએ.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3 class="feature-title">અનુભવી નિષ્ણાત ટીમ</h3>
+                    <p>અમારી અનુભવી અને કુશળ ટીમ દ્વારા તમને શ્રેષ્ઠ અને સચોટ માર્ગદર્શન મળે છે.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">અમારી સેવાઓ</h2>
+                <p class="section-subtitle">તમારા બધા સરકારી અને દસ્તાવેજ સંબંધિત કામો માટે એક જ સ્થળે સંપૂર્ણ સમાધાન.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-id-card"></i></div>
+                        <h3 class="service-title">PAN Card સંબંધિત સેવાઓ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા PAN કાર્ડ માટે અરજી</li>
+                        <li>PAN કાર્ડમાં સુધારા (નામ, સરનામું, જન્મતારીખ)</li>
+                        <li>ગુમ થયેલ PAN કાર્ડનું પુનઃપ્રાપ્તિ</li>
+                        <li>આધાર કાર્ડ સાથે PAN લિંક કરવું</li>
+                        <li>PAN કાર્ડ સ્ટેટસ તપાસવું</li>
+                        <li>e-PAN કાર્ડ ડાઉનલોડ કરવું</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-address-card"></i></div>
+                        <h3 class="service-title">ચૂંટણી કાર્ડ સેવાઓ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા ચૂંટણી કાર્ડ માટે અરજી</li>
+                        <li>ચૂંટણી કાર્ડમાં સુધારા (વિગતો, સરનામું)</li>
+                        <li>ગુમ થયેલ / પુનઃપ્રાપ્ત કાર્ડ માટે અરજી</li>
+                        <li>એક મતવિસ્તારમાંથી બીજામાં સ્થળાંતર</li>
+                        <li>મતદાર યાદીમાં નામ ઉમેરવું / રદ કરવું</li>
+                        <li>e-EPIC કાર્ડ ડાઉનલોડ કરવું</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-passport"></i></div>
+                        <h3 class="service-title">પાસપોર્ટ પ્રક્રિયા</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા પાસપોર્ટ માટે અરજી</li>
+                        <li>પાસપોર્ટનું રિન્યુઅલ / પુનઃઈશ્યુ</li>
+                        <li>ડેટા સુધારાવાળી અરજી</li>
+                        <li>તત્કાલ પાસપોર્ટ માટે સહાય</li>
+                        <li>પોલીસ વેરિફિકેશન સ્ટેટસ તપાસવું</li>
+                        <li>પાસપોર્ટ એપ્લિકેશન અપોઇન્ટમેન્ટ બુકિંગ</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                        <h3 class="service-title">FSSAI ફૂડ લાયસન્સ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા FSSAI લાયસન્સ માટે અરજી</li>
+                        <li>ફૂડ લાયસન્સનું રિન્યુઅલ</li>
+                        <li>ફૂડ લાયસન્સ અપગ્રેડેશન / સુધારા</li>
+                        <li>લાયસન્સ સ્ટેટસ તપાસવું</li>
+                        <li>ડિજિટલ લાયસન્સ ડાઉનલોડ કરવું</li>
+                        <li>FSSAI નંબર મેળવવા માર્ગદર્શન</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-car"></i></div>
+                        <h3 class="service-title">ડ્રાઈવિંગ લાયસન્સ સેવાઓ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા લર્નિંગ લાયસન્સ માટે અરજી</li>
+                        <li>ડ્રાઈવિંગ લાયસન્સ માટે અરજી</li>
+                        <li>લાયસન્સ રિન્યુઅલ</li>
+                        <li>ડુપ્લિકેટ લાયસન્સ માટે અરજી</li>
+                        <li>લાયસન્સમાં સુધારા (વિગતો)</li>
+                        <li>આંતરરાષ્ટ્રીય ડ્રાઈવિંગ પરમિટ માટે સહાય</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-industry"></i></div>
+                        <h3 class="service-title">MSME / Udyam સર્ટિફિકેટ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા MSME/Udyam રજીસ્ટ્રેશન</li>
+                        <li>MSME પ્રમાણપત્ર ડાઉનલોડ</li>
+                        <li>રજીસ્ટ્રેશનમાં સુધારા/અપડેટ</li>
+                        <li>સરકારી યોજનાઓ અને લોન માટે સહાય</li>
+                        <li>MSME રિન્યુઅલ / અપડેટ</li>
+                        <li>વિવિધ સરકારી યોજનાઓના લાભ મેળવવા માર્ગદર્શન</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3 class="service-title">રેશનકાર્ડ સેવાઓ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>નવા રેશનકાર્ડ મેળવવાની અરજી (BPL, APL, AAY)</li>
+                        <li>રેશનકાર્ડમાં સુધારો (નામ, સરનામું, જન્મતારીખ, સંબંધ)</li>
+                        <li>પરિવાર સભ્યો ઉમેરવા/કાઢવા</li>
+                        <li>ગુમ થયેલ રેશનકાર્ડની નકલ મેળવવી</li>
+                        <li>e-Ration Card ડાઉનલોડ સેવા</li>
+                        <li>સરકારી રાશન યોજનાઓ વિશે માહિતી અને માર્ગદર્શન</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-baby"></i></div>
+                        <h3 class="service-title">જન્મ દાખલા સેવાઓ</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>જન્મ દાખલામાં સુધારો (નામ, જન્મતારીખ, માતા/પિતાનું નામ, જાતિ)</li>
+                        <li>ગુમ થયેલ જન્મ દાખલાનું ડુપ્લિકેટ પ્રમાણપત્ર મેળવવું</li>
+                        <li>જન્મ દાખલાનું ડિજિટલ ડાઉનલોડ (e-Certificate)</li>
+                        <li>નોંધણી અને પ્રમાણપત્ર મેળવવા માર્ગદર્શન</li>
+                        <li>જન્મ નોંધણી સંબંધિત અન્ય સેવાઓ</li>
+                        <li>તાત્કાલિક જન્મ દાખલા માટે સહાય</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="section-title">તમારા કામ શરૂ કરવા તૈયાર છો?</h2>
+                <p class="section-subtitle">આજે જ અમારો સંપર્ક કરો અને તમારા બધા સરકારી કામો સરળતાથી અને સચોટ રીતે પૂરા કરાવો.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+919726912218" class="cta-button">
+                        <i class="fas fa-phone-alt"></i> અત્યારે કૉલ કરો
+                    </a>
+                    <a href="https://wa.me/919726912218" target="_blank" rel="noopener noreferrer" class="cta-button">
+                        <i class="fab fa-whatsapp"></i> WhatsApp પર સંપર્ક કરો
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JVS Center</h3>
+                    <p>તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર, જ્યાં તમને ઝડપી, સુરક્ષિત અને પારદર્શક સેવાઓ મળે છે.</p>
+                    <p>વર્ષોના અનુભવ સાથે, અમે તમારા સરકારી દસ્તાવેજો સંબંધિત કાર્યોને સરળ બનાવીએ છીએ.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>સંપર્ક માહિતી</h3>
+                    <a href="tel:+919726912218"><i class="fas fa-phone-alt"></i> +91 97269 12218</a>
+                    <a href="https://wa.me/919726912218" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +91 97269 12218</a>
+                    <p><i class="fas fa-map-marker-alt"></i> અમદાવાદ, ગુજરાત, ભારત</p>
+                </div>
+                <div class="footer-section">
+                    <h3>મહત્વપૂર્ણ સેવાઓ</h3>
+                    <a href="#services">PAN કાર્ડ સેવાઓ</a>
+                    <a href="#services">પાસપોર્ટ સેવાઓ</a>
+                    <a href="#services">ચૂંટણી કાર્ડ સેવાઓ</a>
+                    <a href="#services">FSSAI લાયસન્સ</a>
+                    <a href="#services">રેશનકાર્ડ સેવાઓ</a>
+                    <a href="#services">જન્મ દાખલા સેવાઓ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>કામના કલાકો</h3>
+                    <p>સોમવાર - શનિવાર</p>
+                    <p>સવારે ૯:૦૦ થી સાંજે ૭:૦૦</p>
+                    <p>રવિવાર: બંધ</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> JVS Center. સર્વ હક સુરક્ષિત.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu after clicking a link
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Navbar shrink on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Dynamically update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
