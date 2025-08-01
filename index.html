@@ -528,7 +528,6 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-               tyle>
                 top: 100%;
                 left: 0;
                 width: 100%;
@@ -614,7 +613,6 @@
                 margin-bottom: 2.5rem;
             }
             .section-title {
-                margin-top: 40px;
                 font-size: 1.7rem;
             }
             .section-subtitle {
@@ -625,7 +623,6 @@
                 padding-left: 1.5rem;
             }
             .service-list li::before {
-                margin-top: 13px;
                 font-size: 0.8rem;
                 top: 0.6rem;
             }
@@ -659,8 +656,8 @@
     <header class="hero-section" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">JVS CENTER</h1> <br>
-                <h3 class="hero-title"> તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર</h3>
+                <h1 class="hero-title">JVS CENTER</h1>
+                <h3 class="hero-title">તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર</h3>
                 <p class="hero-subtitle">અમે તમારા બધા સરકારી અને ડિજિટલ દસ્તાવેજો સંબંધિત કાર્યોને સરળ અને ઝડપી બનાવીએ છીએ.</p>
                 <a href="tel:+919726912218" class="hero-cta">
                     <i class="fas fa-phone-alt"></i> હમણાં કૉલ કરો
@@ -822,7 +819,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-header">
-                        <div class="service-icon"><i class="fas fa-baby"></i></div>
+                        <div class="service-icon"><i class="fas fa-city"></i></div>
                         <h3 class="service-title">અમદાવાદ મહાનગર પાલિકા સેવાઓ</h3>
                     </div>
                     <ul class="service-list">
@@ -841,7 +838,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-header">
-                        <div class="service-icon"><i class="fas fa-baby"></i></div>
+                        <div class="service-icon"><i class="fas fa-tractor"></i></div>
                         <h3 class="service-title">PM કિસાન યોજના</h3>
                     </div>
                     <ul class="service-list">
@@ -851,16 +848,16 @@
                         <li>E-KYC</li>
                     </ul>
                 </div>
-                 <div class="service-card">
+                <div class="service-card">
                     <div class="service-header">
-                        <div class="service-icon"><i class="fas fa-baby"></i></div>
-                        <h3 class="service-title">પ્રોપ્રર્ટી કાર્ડ સેવાઓ</h3>
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <h3 class="service-title">પ્રોપર્ટી કાર્ડ સેવાઓ</h3>
                     </div>
                     <ul class="service-list">
-                        <li> નવી પ્રોપર્ટી કાર્ડ માટે અરજી</li>
-                        <li> પ્રોપર્ટી કાર્ડ નકલ</li>
-                        <li>પ્રોપર્ટી કાર્ડમાં સુધારાની અરજી </li>
-                        <li> બીજી અન્ય સેવાઓ </li>
+                        <li>નવી પ્રોપર્ટી કાર્ડ માટે અરજી</li>
+                        <li>પ્રોપર્ટી કાર્ડ નકલ</li>
+                        <li>પ્રોપર્ટી કાર્ડમાં સુધારાની અરજી</li>
+                        <li>બીજી અન્ય સેવાઓ</li>
                     </ul>
                 </div>
             </div>
@@ -908,7 +905,7 @@
                 <div class="footer-section">
                     <h3>JVS Center</h3>
                     <p>તમારા ડિજિટલ કામો માટે વિશ્વસનીય કેન્દ્ર, જ્યાં તમને ઝડપી, સુરક્ષિત અને પારદર્શક સેવાઓ મળે છે.</p>
-                    <p>વર્ષોના અનુભવ સાથે, અમે તમારા સરકારી દસ્તાવેજો સંબંધિત કાર્યોને સરળ બનાવીએ છીએ.</p>
+                    <p>વર્ષોના અનુભવ સાથે, અમે તમારા સરકારી દસ્તાવેજો સંબંધિત કાર્યોને સરળ બનાવીએ છી઎.</p>
                 </div>
                 <div class="footer-section">
                     <h3>સંપર્ક માહિતી</h3>
@@ -952,6 +949,8 @@
                         });
                     }
                     // Close mobile menu after clicking a link
+                    const navLinks = document.getElementById('navLinks');
+                    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
                     if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
                         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
